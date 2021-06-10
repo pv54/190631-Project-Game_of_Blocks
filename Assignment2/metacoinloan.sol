@@ -56,6 +56,15 @@ contract Loan is MetaCoin {
     }
     
     // Fill up the following function definitions and also try to justify why some functions are pure and some are view and some are none, in your README.md
+    function mulDiv (uint x, uint y) public pure returns (uint)
+    {
+        return x * y ;
+    }
+    
+    function add (uint x, uint y) public pure returns (uint)
+    {
+        return x+y;
+    }
     
     function getCompoundInterest(uint256 principle, uint rate, uint time) public pure returns(uint256) {
     	
@@ -63,7 +72,7 @@ contract Loan is MetaCoin {
              uint preprince=principal;
              while(time--)
     	     {
-    	         principal = add (principal, mulDiv ((R/100), principal, 10^18));
+    	         principal = add (principal, (mulDiv(R, principal)/100));
     	     
     	     }
     	     return principal-preprince;
